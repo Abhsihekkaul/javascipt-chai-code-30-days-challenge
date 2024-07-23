@@ -46,5 +46,33 @@ obj.x(); //Inside object the value of this is the object itself;
 
 
 // Topic : call, apply and bind (Sharing method)
+
+
 // if we have two objects and wee want to share the method of 1st obj to 2nd object then
 // we use call apply and bind methods
+
+const student = {
+    name : "Abhishek",
+    printName : function (){
+        console.log(this.name); //this will be the student obj and .name will refer to the variable inside 
+    }
+}
+
+console.log(student.printName());
+
+const student2 = {
+    name: "Anku",
+}
+
+// Now in order to use the method of the 1st funtion in second we will use the call 
+student.printName.call(student2); //Here this is refering to student 2
+
+
+// How does "this " works in arrow funtion 
+// arrow funtion don't have this binding associated to it however "this " will be in arrow funtion is enclosing lexical context
+// ṭherefore it will take the value of the window object as it lexically available in the global space
+
+// if i create a method inside the object and inside the method i will further create a arrow funtion and inside arrow funtion i will
+// print the "this" thereafter as we know the arrow funtion is encllosed inside the method therefore the answer will become 
+//  the object rather than window objecct itself.
+
