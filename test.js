@@ -126,27 +126,48 @@ let avgScore = totalScore / studentScores.length;
 console.log(avgScore);
 
 
-// Adv 1
-const salesTransactions = [
-    { product: "Laptop", amount: 1000 },
-    { product: "Phone", amount: 500 },
-    { product: "Laptop", amount: 1200 },
-    { product: "Tablet", amount: 400 },
-    { product: "Phone", amount: 700 }
+
+//q1
+const inventory = [
+  { category: 'Electronics', item: 'Laptop', inStock: 4 },
+  { category: 'Electronics', item: 'Phone', inStock: 10 },
+  { category: 'Electronics', item: 'Tablet', inStock: 5 },
+  { category: 'Furniture', item: 'Chair', inStock: 20 },
+  { category: 'Furniture', item: 'Table', inStock: 15 },
+  { category: 'Clothing', item: 'T-Shirt', inStock: 50 },
+  { category: 'Clothing', item: 'Jeans', inStock: 30 },
+  { category: 'Clothing', item: 'Jacket', inStock: 10 },
+];
+
+
+const summaryReport = inventory.reduce((acc, curr) => {
+    if (!acc[curr.category]) {
+      acc[curr.category] = 0;
+    }
+    acc[curr.category] += curr.inStock;
+    return acc;
+  }, {});
+  
+  console.log(summaryReport);
+  // Output: { Electronics: 19, Furniture: 35, Clothing: 90 }
+  
+
+  const salesData = [
+    { product: 'Laptop', revenue: 1200 },
+    { product: 'Phone', revenue: 800 },
+    { product: 'Tablet', revenue: 600 },
+    { product: 'Laptop', revenue: 1500 },
+    { product: 'Phone', revenue: 700 },
+    { product: 'Laptop', revenue: 1300 },
+    { product: 'Tablet', revenue: 400 },
   ];
 
-let SummaryList = {};
+const summaryReport1 = salesData.reduce((acc,curr)=>{
+    if(!acc[curr.product]){
+        acc[curr.product] = 0;
+    }
+    acc[curr.product] += curr.revenue;
+    return acc;
+},{})
 
-
-let laptopsale = salesTransactions.filter(element => element.product ).reduce((acc,curr)=>{
-    return acc += curr.amount;
-},0)
-
-
-salesTransactions.filter((elements) => {
-    SummaryList[elements.product] = 
-})
-
-
-
-console.log(SummaryList);
+console.log(summaryReport1);
